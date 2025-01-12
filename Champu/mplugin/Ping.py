@@ -1,20 +1,15 @@
-import asyncio
-import logging
 import random
 import time
 import psutil
-import config
-import os
 from Champu import _boot_
 from Champu import get_readable_time
 from Champu.mplugin.helpers import is_owner
 from Champu import Champu
 from datetime import datetime
-from pymongo import MongoClient
 from pyrogram.enums import ChatType
 from pyrogram import Client, filters
 from Champu import db
-from config import OWNER_ID, MONGO_URL, OWNER_USERNAME
+from config import OWNER_USERNAME
 from pyrogram.errors import FloodWait, ChatAdminRequired
 from Champu.database.chats import get_served_chats, add_served_chat
 from Champu.database.users import get_served_users, add_served_user
@@ -74,7 +69,7 @@ async def ping(client: Client, message: Message):
 
     ms = (datetime.now() - start).microseconds / 1000
     await loda.edit_text(
-        text=f"нey вαву!!\n{(await client.get_me()).mention} ᴄʜᴀᴛʙᴏᴛ ιѕ alιve 🥀 αnd worĸιng ғιne wιтн a pιng oғ\n\n**➥** `{ms}` ms\n**➲ ᴄᴘᴜ:** {CPU}\n**➲ ʀᴀᴍ:** {RAM}\n**➲ ᴅɪsᴋ:** {DISK}\n**➲ ᴜᴘᴛɪᴍᴇ »** {UP}\n\n<b>||**๏ мαdє ωιтн ❣️ ву [ᴠɪᴘ ʙᴏʏ](https://t.me/{OWNER_USERNAME}) **||</b>",
+        text=f"нey вαву!!\n{(await client.get_me()).mention} ᴄʜᴀᴛʙᴏᴛ ιѕ alιve 🥀 αnd worĸιng ғιne wιтн a pιng oғ\n\n**➥** `{ms}` ms\n**➲ ᴄᴘᴜ:** {CPU}\n**➲ ʀᴀᴍ:** {RAM}\n**➲ ᴅɪsᴋ:** {DISK}\n**➲ ᴜᴘᴛɪᴍᴇ »** {UP}\n\n<b>||**๏ мαdє ωιтн ❣️ ву [ᴄʜᴧᴍᴘᴜ](https://t.me/{OWNER_USERNAME}) **||</b>",
         reply_markup=InlineKeyboardMarkup(PNG_BTN),
     )
     if message.chat.type == ChatType.PRIVATE:
